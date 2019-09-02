@@ -23,7 +23,5 @@
     "url": "https://github.com/calemdar/tune-mountain-website/issues"
   },
   "homepage": "https://github.com/calemdar/tune-mountain-website#readme",
-  "devDependencies": {
-    "eslint": "^6.3.0"
-  }
+  "devDependencies": {}
 }

@@ -17,11 +17,6 @@
 .env.production.local
 .idea
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-
 # client
 tune-mountain-client/node_modules
 tune-mountain-client/.idea/*
