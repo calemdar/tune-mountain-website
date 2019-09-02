@@ -1,5 +1,3 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
 /node_modules
 /.pnp
@@ -19,6 +17,11 @@
 .env.production.local
 .idea
 
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# client
+tune-mountain-client/node_modules
+tune-mountain-client/.idea/*
