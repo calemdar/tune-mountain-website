@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import InputManager from "tune-mountain-input-manager";
 
 class App extends Component {
 
@@ -11,6 +12,23 @@ class App extends Component {
 		};
 
 		let array = ["a"];
+
+		this.inputManager = new InputManager(
+			document,
+			{
+				"a": [
+					"Trick",
+					"DoAThing"
+				],
+				" ": ["Jump"]
+			},
+			{
+				"userID": "APerson1234",
+				"sessionID": "ABC!@#ABC"
+			}
+		);
+
+		this.inputManager.getObservable().subscribe(actionEvent => console.log(actionEvent.toString()));
 
 		console.log(array);
 
@@ -25,9 +43,22 @@ class App extends Component {
 
 	render() {
 
+		const url = '/spotify-service/login';
+
+		const handleClick = () => {
+
+
+			fetch(url).then(r => r.json()).then(r => console.log(r));
+
+		};
+
 		return(
 			<div>
-				{this.state.text}
+				<button onClick={handleClick}>Login with Spotify</button>
+				<br/>
+				<a href={url}>Link to spotify</a>
+				<br/>
+				<button onClick={() => fetch('/test').then(r => r.json()).then(r => console.log(r))}>test url</button>
 			</div>
 		);
 
