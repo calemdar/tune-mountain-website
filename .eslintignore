@@ -1,0 +1,3 @@
+
+# ignore client code because it uses a different syntax
+/static/*

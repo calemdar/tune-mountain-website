@@ -12,7 +12,7 @@ Generators.randomString = (length) => {
 	let text = "";
 	const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-	for (let i = 0; i < length; i++) {
+	for (let index = 0; index < length; index++) {
 
 			text += possible.charAt(Math.floor(Math.random() * possible.length));
 
