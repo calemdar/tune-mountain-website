@@ -1,7 +1,10 @@
+#!/usr/bin/env node
+
 //     *** Node Application ***     //
 // serves static files and proxies  //
 // requests to the Spotify services //
 
+/* eslint node/shebang:0*/
 const express = require("express"),
 	path = require("path"),
 	cors = require("cors"),
