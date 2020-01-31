@@ -8,34 +8,30 @@
 const express = require("express"),
 	path = require("path"),
 	cors = require("cors"),
+	bodyParser = require("body-parser"),
 	cookieParser = require("cookie-parser"),
 	logger = require("./utils/Logger")(),
 	spotifyService = require("./routes/SpotifyServiceBackend"),
+	proxyRouter = require("./routes/ProxyRouter"),
 	port = (process.env.PORT || 8080);
-
-// todo: separate requests into their own routes
 
 const app = express();
 
 // utilize static react files
 app.use(express.static(path.join(__dirname, "../static")));
+app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors());
+
+app.use("/api", proxyRouter);
 app.use("/spotify-service", spotifyService);
 
 // return react index file
 app.get("/", (req, res) => {
 
 	// status ok
-	res.status(200);
-	res.sendFile(path.join(__dirname + "/index.html"));
-
-});
-
-app.get("/test", (req, res) => {
-
-	console.log("this works!");
-	res.json({"response": "hello!"});
+	res.status(200).
+		sendFile(path.join(__dirname + "/index.html"));
 
 });
 
