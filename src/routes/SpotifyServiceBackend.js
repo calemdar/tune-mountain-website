@@ -9,7 +9,7 @@ const router = Router();
 const stateKey = "spotify_auth_state";
 
 // if react is is proxying to node server, use this, otherwise comment it out
-const DEBUG = "http://localhost:3000";
+const DEBUG = "https://tune-mountain.com"; // "http://localhost:3000";
 
 /**
  * Spotify Login handling.
