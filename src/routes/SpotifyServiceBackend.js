@@ -36,7 +36,10 @@ router.get("/login", (req, res) => {
 
 	logger.log([
 		"Login redirect clicked. Query object is: ",
-		queryObject
+		{
+		    ...queryObject,
+            "cookie": res.cookies
+        }
 	]);
 
 });
