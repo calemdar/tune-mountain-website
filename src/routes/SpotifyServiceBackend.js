@@ -69,7 +69,8 @@ router.get("/callback", (req, res) => {
 
 		logger.log({
             "error:": "State mismatch!",
-            "state": state
+            "requestState": state,
+            "storedState": storedState
 		});
 
 	} else {
