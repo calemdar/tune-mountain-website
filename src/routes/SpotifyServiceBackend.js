@@ -2,6 +2,7 @@ const {Router} = require("express");
 const querystring = require("querystring");
 const request = require("request");
 const config = require("../../config");
+const cookieParser = require("cookie-parser");
 const {randomString} = require("../utils/Generators");
 const logger = require("../utils/Logger")();
 
@@ -10,6 +11,8 @@ const stateKey = "spotify_auth_state";
 
 // if react is is proxying to node server, use this, otherwise comment it out
 const DEBUG = "https://tune-mountain.com"; // "http://localhost:3000";
+
+router.use(cookieParser());
 
 /**
  * Spotify Login handling.
@@ -38,7 +41,7 @@ router.get("/login", (req, res) => {
 		"Login redirect clicked. Query object is: ",
 		{
 		    ...queryObject,
-            "cookie": res.cookies
+            "cookies": res.cookies
         }
 	]);
 
