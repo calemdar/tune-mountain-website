@@ -2,7 +2,6 @@ const {Router} = require("express");
 const querystring = require("querystring");
 const request = require("request");
 const config = require("../../config");
-const cookieParser = require("cookie-parser");
 const {randomString} = require("../utils/Generators");
 const logger = require("../utils/Logger")();
 
@@ -10,9 +9,7 @@ const router = Router();
 const stateKey = "spotify_auth_state";
 
 // if react is is proxying to node server, use this, otherwise comment it out
-const DEBUG = "https://tune-mountain.com"; // "http://localhost:3000";
-
-router.use(cookieParser());
+const DEBUG = ""; // "http://localhost:3000";
 
 /**
  * Spotify Login handling.
@@ -39,10 +36,7 @@ router.get("/login", (req, res) => {
 
 	logger.log([
 		"Login redirect clicked. Query object is: ",
-		{
-		    ...queryObject,
-            "cookies": res.cookies
-        }
+		queryObject
 	]);
 
 });
@@ -66,7 +60,7 @@ router.get("/callback", (req, res) => {
 		? req.cookies[stateKey]
 		: null;
 
-	if (false /* state === null || state !== storedState */) {
+	if (state === null || state !== storedState) {
 
 		res.redirect(`/#${
 			querystring.stringify({
@@ -74,9 +68,9 @@ router.get("/callback", (req, res) => {
 			})}`);
 
 		logger.log({
-            "error:": "State mismatch!",
-            "requestState": state,
-            "storedState": storedState
+			"error": "State mismatch!",
+			"queryState": state,
+			storedState
 		});
 
 	} else {

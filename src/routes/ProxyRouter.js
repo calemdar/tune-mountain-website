@@ -3,6 +3,7 @@ const request = require("request");
 
 const router = Router();
 const baseUrl = "https://api.leogons.com/tm";
+const devUrl = "http://localhost:9595/tm";
 
 // proxies all requests to API server
 router.all("/*", (req, res) => {
@@ -10,7 +11,8 @@ router.all("/*", (req, res) => {
     const options = {
         "url": baseUrl + req.path,
         "json": true,
-        "body": req.body
+        "body": req.body,
+        "headers": req.headers
     };
 
     if (req.method === "GET") {

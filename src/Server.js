@@ -9,6 +9,7 @@ const express = require("express"),
 	path = require("path"),
 	cors = require("cors"),
 	bodyParser = require("body-parser"),
+	cookieParser = require("cookie-parser"),
 	logger = require("./utils/Logger")(),
 	spotifyService = require("./routes/SpotifyServiceBackend"),
 	proxyRouter = require("./routes/ProxyRouter"),
@@ -19,6 +20,7 @@ const app = express();
 // utilize static react files
 app.use(express.static(path.join(__dirname, "../static")));
 app.use(bodyParser.json());
+app.use(cookieParser());
 app.use(cors());
 
 app.use("/api", proxyRouter);
