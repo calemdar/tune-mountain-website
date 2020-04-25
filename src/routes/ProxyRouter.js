@@ -2,8 +2,8 @@ const {Router} = require("express");
 const request = require("request");
 
 const router = Router();
-const temp = "https://api.leogons.com/tm";
-const baseUrl = "http://localhost:9595/tm";
+const baseUrl = "https://api.leogons.com/tm";
+const devUrl = "http://localhost:9595/tm";
 
 // proxies all requests to API server
 router.all("/*", (req, res) => {
