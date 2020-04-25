@@ -11,7 +11,8 @@ router.all("/*", (req, res) => {
     const options = {
         "url": baseUrl + req.path,
         "json": true,
-        "body": req.body
+        "body": req.body,
+        "headers": req.headers
     };
 
     if (req.method === "GET") {
